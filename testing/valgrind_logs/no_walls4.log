@@ -1,0 +1,16 @@
+==444087== Memcheck, a memory error detector
+==444087== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==444087== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==444087== Command: ../so_long ../So_long-Tester/maps_err/no_walls4.ber
+==444087== 
+Error
+Map is not surrounded by walls
+==444087== 
+==444087== HEAP SUMMARY:
+==444087==     in use at exit: 0 bytes in 0 blocks
+==444087==   total heap usage: 61 allocs, 61 frees, 1,732 bytes allocated
+==444087== 
+==444087== All heap blocks were freed -- no leaks are possible
+==444087== 
+==444087== For lists of detected and suppressed errors, rerun with: -s
+==444087== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

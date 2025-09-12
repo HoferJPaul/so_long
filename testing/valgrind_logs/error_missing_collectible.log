@@ -1,0 +1,16 @@
+==432692== Memcheck, a memory error detector
+==432692== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==432692== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==432692== Command: ../so_long ./testmaps/error_missing_collectible.ber
+==432692== 
+Error
+Map must contain exactly one exit (E) and collectable (C)
+==432692== 
+==432692== HEAP SUMMARY:
+==432692==     in use at exit: 0 bytes in 0 blocks
+==432692==   total heap usage: 37 allocs, 37 frees, 868 bytes allocated
+==432692== 
+==432692== All heap blocks were freed -- no leaks are possible
+==432692== 
+==432692== For lists of detected and suppressed errors, rerun with: -s
+==432692== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

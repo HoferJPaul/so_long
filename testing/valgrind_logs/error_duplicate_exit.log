@@ -1,0 +1,16 @@
+==432646== Memcheck, a memory error detector
+==432646== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==432646== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==432646== Command: ../so_long ./testmaps/error_duplicate_exit.ber
+==432646== 
+Error
+Map must contain exactly one exit (E) and collectable (C)
+==432646== 
+==432646== HEAP SUMMARY:
+==432646==     in use at exit: 0 bytes in 0 blocks
+==432646==   total heap usage: 37 allocs, 37 frees, 908 bytes allocated
+==432646== 
+==432646== All heap blocks were freed -- no leaks are possible
+==432646== 
+==432646== For lists of detected and suppressed errors, rerun with: -s
+==432646== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
