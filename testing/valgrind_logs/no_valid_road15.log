@@ -1,0 +1,16 @@
+==443961== Memcheck, a memory error detector
+==443961== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==443961== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==443961== Command: ../so_long ../So_long-Tester/maps_err/no_valid_road15.ber
+==443961== 
+Error
+Not all collectibles are reachable
+==443961== 
+==443961== HEAP SUMMARY:
+==443961==     in use at exit: 0 bytes in 0 blocks
+==443961==   total heap usage: 70 allocs, 70 frees, 1,932 bytes allocated
+==443961== 
+==443961== All heap blocks were freed -- no leaks are possible
+==443961== 
+==443961== For lists of detected and suppressed errors, rerun with: -s
+==443961== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

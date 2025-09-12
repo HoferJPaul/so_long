@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BIN="${BIN:-../so_long}"     # allow override: BIN=./so_long ./testbash
+MAPDIR="${MAPDIR:-../So_long-Tester/maps_valid}"
+SUPP="${SUPP:-}"                    # e.g., --suppressions=valgrind-mlx.supp
+VG_FLAGS="--leak-check=full --show-leak-kinds=all --error-exitcode=99"
+TIMEOUT="${TIMEOUT:-10}"            # seconds
+TITLE_HINT="${TITLE_HINT:-so_long}" # window title to target with xdotool
+LOGDIR="${LOGDIR:-./valgrind_logs}"
+
+mkdir -p "$LOGDIR"
+
+# Colors
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+RESET='\033[0m'
+
+if [[ ! -x "$BIN" ]]; then
+  echo -e "${RED}Error:${RESET} $BIN not found or not executable" >&2
+  exit 2
+fi
+
+if [[ ! -d "$MAPDIR" ]]; then
+  echo -e "${RED}Error:${RESET} map dir not found: $MAPDIR" >&2
+  exit 2
+fi
+
+overall_ok=1
+
+shopt -s nullglob
+for map in "$MAPDIR"/*.ber; do
+  name="$(basename "$map")"
+  log="$LOGDIR/${name%.ber}.log"
+
+  echo -e "${CYAN}======================================================${RESET}"
+  echo -e "${CYAN}Testing map:${RESET} $map"
+  echo -e "${CYAN}Log:${RESET} $log"
+  echo -e "${CYAN}======================================================${RESET}"
+
+  set +e
+  timeout "$TIMEOUT" valgrind $VG_FLAGS $SUPP "$BIN" "$map" >"$log" 2>&1 &
+  VG_PID=$!
+  set -e
+
+  # Wait a moment for the window
+  sleep 0.8
+
+  if command -v xdotool >/dev/null 2>&1; then
+    if WIDS=$(xdotool search --name "$TITLE_HINT" 2>/dev/null); then
+      for wid in $WIDS; do
+        xdotool key --window "$wid" Escape
+      done
+    fi
+  fi
+
+  set +e
+  wait $VG_PID
+  ec=$?
+  set -e
+
+  if [[ $ec -eq 124 ]]; then
+    echo -e "${RED}[TIMEOUT]${RESET} after ${TIMEOUT}s → killing ${name}" | tee -a "$log"
+    overall_ok=0
+  elif [[ $ec -eq 99 ]]; then
+    echo -e "${RED}[ERROR]${RESET} Valgrind found errors for ${name}" | tee -a "$log"
+    overall_ok=0
+  elif [[ $ec -ne 0 ]]; then
+    echo -e "${RED}[CRASH]${RESET} Process exited with code $ec for ${name}" | tee -a "$log"
+    overall_ok=0
+  elif grep -q "All heap blocks were freed" "$log"; then
+    echo -e "${GREEN}[OK]${RESET} $name — no leaks"
+  elif grep -q "ERROR SUMMARY: 0 errors" "$log"; then
+    echo -e "${YELLOW}[WARN]${RESET} $name — no errors but check log for reachables/suppressed"
+  else
+    echo -e "${RED}[!!]${RESET} $name — see $log"
+    overall_ok=0
+  fi
+
+  echo
+done
+
+if [[ $overall_ok -ne 1 ]]; then
+  echo -e "${RED}Some tests reported issues.${RESET} Inspect logs in $LOGDIR."
+  exit 1
+else
+  echo -e "${GREEN}All tests passed with no Valgrind errors.${RESET}"
+fi

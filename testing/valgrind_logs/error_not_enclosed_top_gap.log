@@ -1,0 +1,16 @@
+==432723== Memcheck, a memory error detector
+==432723== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==432723== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==432723== Command: ../so_long ./testmaps/error_not_enclosed_top_gap.ber
+==432723== 
+Error
+Map is not surrounded by walls
+==432723== 
+==432723== HEAP SUMMARY:
+==432723==     in use at exit: 0 bytes in 0 blocks
+==432723==   total heap usage: 31 allocs, 31 frees, 686 bytes allocated
+==432723== 
+==432723== All heap blocks were freed -- no leaks are possible
+==432723== 
+==432723== For lists of detected and suppressed errors, rerun with: -s
+==432723== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
