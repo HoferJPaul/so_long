@@ -1,0 +1,16 @@
+==444173== Memcheck, a memory error detector
+==444173== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==444173== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==444173== Command: ../so_long ../So_long-Tester/maps_err/wrong_chars3.ber
+==444173== 
+Error
+Invalid char: 9
+==444173== 
+==444173== HEAP SUMMARY:
+==444173==     in use at exit: 0 bytes in 0 blocks
+==444173==   total heap usage: 61 allocs, 61 frees, 1,732 bytes allocated
+==444173== 
+==444173== All heap blocks were freed -- no leaks are possible
+==444173== 
+==444173== For lists of detected and suppressed errors, rerun with: -s
+==444173== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

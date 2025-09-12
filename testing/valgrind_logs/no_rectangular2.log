@@ -1,0 +1,16 @@
+==443828== Memcheck, a memory error detector
+==443828== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==443828== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==443828== Command: ../so_long ../So_long-Tester/maps_err/no_rectangular2.ber
+==443828== 
+Error
+Map is not rectangular
+==443828== 
+==443828== HEAP SUMMARY:
+==443828==     in use at exit: 0 bytes in 0 blocks
+==443828==   total heap usage: 61 allocs, 61 frees, 1,722 bytes allocated
+==443828== 
+==443828== All heap blocks were freed -- no leaks are possible
+==443828== 
+==443828== For lists of detected and suppressed errors, rerun with: -s
+==443828== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

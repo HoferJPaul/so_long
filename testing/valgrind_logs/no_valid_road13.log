@@ -1,0 +1,16 @@
+==443940== Memcheck, a memory error detector
+==443940== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==443940== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==443940== Command: ../so_long ../So_long-Tester/maps_err/no_valid_road13.ber
+==443940== 
+Error
+Map is not rectangular
+==443940== 
+==443940== HEAP SUMMARY:
+==443940==     in use at exit: 0 bytes in 0 blocks
+==443940==   total heap usage: 5 allocs, 5 frees, 96 bytes allocated
+==443940== 
+==443940== All heap blocks were freed -- no leaks are possible
+==443940== 
+==443940== For lists of detected and suppressed errors, rerun with: -s
+==443940== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
