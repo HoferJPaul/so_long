@@ -29,7 +29,7 @@ Primary goals:
 - Work with map parsing, validation, and state updates.  
 - Maintain movement count or other metrics visible to the player.  
 
-(This aligns with the 42 “so_long” project specification. ([42-cursus.gitbook.io](https://42-cursus.gitbook.io/guide/2-rank-02/so_long/understand-so_long?utm_source=chatgpt.com)))
+(This aligns with the 42 “so_long” project specification.
 
 ---
 
