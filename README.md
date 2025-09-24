@@ -3,6 +3,7 @@
 _A small 2D game written in C using MiniLibX, part of the 42 curriculum “so_long” project._
 
 ---
+## CURRENTLY ONLY COMPATIBLE WITH LINUX!
 
 ## Table of Contents
 
